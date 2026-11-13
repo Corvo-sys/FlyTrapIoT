@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SQL_EJEMPLO_1"
+rootProject.name = "FlyTrapIoT"
 include ':app'

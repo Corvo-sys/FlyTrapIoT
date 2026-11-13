@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class AdminSQLiteOpenHelper extends SQLiteOpenHelper
 {
-    private static final String NOMBRE_BASE_DATOS = "contactos.db";
+    private static final String NOMBRE_BASE_DATOS = "fyltrap_db";
     private static final int VERSION_BASE_DATOS = 1;
 
     AdminSQLiteOpenHelper(Context contexto)
@@ -18,14 +18,20 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper
     public void onCreate(SQLiteDatabase db)
     {
         //TIENE TODO EL CODIGO PARA CREAR LAS TABLAS DE MI BASE DE DATOS
-        String crearTabla = "CREATE TABLE contactos ( id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, telefono TEXT )";
+        String crearTabla = "CREATE TABLE trampas (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "codigo_sector TEXT NOT NULL," +
+                "tipo_trampa TEXT NOT NULL," +
+                "nivel_captura INTEGER NOT NULL," +
+                "observaciones TEXT" +
+                ")";
         db.execSQL(crearTabla);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int version_vieja, int version_nueva)
     {
-        db.execSQL("DROP TABLE IF EXISTS contactos"); //eliminamos la tabla
+        db.execSQL("DROP TABLE IF EXISTS trampas"); //eliminamos la tabla
         onCreate(db); //creamos la nueva version de la tabla
     }
 }

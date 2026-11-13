@@ -15,7 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class EditarActivity extends AppCompatActivity {
-    EditText input_nombre, input_telefono;
+    EditText input_codigo_sector, input_tipo_trampa, input_nivel_capturas, input_observaciones;
     Button boton_enviar;
 
     public int id_actual ;
@@ -31,32 +31,40 @@ public class EditarActivity extends AppCompatActivity {
             return insets;
         });
 
-        input_nombre = findViewById(R.id.input_nombre2);
-        input_telefono = findViewById(R.id.input_telefono2);
+        input_codigo_sector = findViewById(R.id.input_codigo_sector);
+        input_tipo_trampa = findViewById(R.id.input_tipo_trampas2);
+        input_nivel_capturas = findViewById(R.id.input_nivel_captura2);
+        input_observaciones = findViewById(R.id.input_observaciones2);
         boton_enviar = findViewById(R.id.boton_enviar2);
 
         Intent intent_actual = getIntent();
         id_actual = intent_actual.getIntExtra("id_actual", -1);
 
-        cargarContacto(id_actual);
+        cargarTrampas(id_actual);
 
         boton_enviar.setOnClickListener(v -> {
-            actualizarContacto(id_actual);
+            actualizartrampas(id_actual);
         });
     }
 
-    public void cargarContacto(int id)
+    public void cargarTrampas(int id)
     {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this);
         SQLiteDatabase db = admin.getReadableDatabase();
 
-        Cursor consulta = db.rawQuery("SELECT id,nombre,telefono FROM contactos WHERE id="+id, null);
+        Cursor consulta = db.rawQuery("SELECT id,codigo_sector,tipo_trampa,nivel_captura,observaciones " + "FROM trampas WHERE id="+id, null);
 
         if(consulta.moveToFirst())
         {
             //existe valor
-            input_nombre.setText(consulta.getString(1));
-            input_telefono.setText(consulta.getString(2));
+            input_codigo_sector.setText(consulta.getString(1));
+
+            input_tipo_trampa.setText(consulta.getString(2));
+
+            input_nivel_capturas.setText(String.valueOf(consulta.getInt(3)));
+
+            input_observaciones.setText(
+                    consulta.getString(4));
         }
         else
         {
@@ -67,19 +75,26 @@ public class EditarActivity extends AppCompatActivity {
         consulta.close();
     }
 
-    public void actualizarContacto(int id)
+    public void actualizartrampas(int id)
     {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this);
         SQLiteDatabase db = admin.getWritableDatabase();
 
-        String valor_nombre = input_nombre.getText().toString();
-        String valor_telefono = input_telefono.getText().toString();
+        String codigoSector = input_codigo_sector.getText().toString();
+
+        String tipoTrampa = input_tipo_trampa.getText().toString();
+
+        String nivelCaptura = input_nivel_capturas.getText().toString();
+
+        String observaciones = input_observaciones.getText().toString();
 
         ContentValues valores = new ContentValues();
-        valores.put("nombre", valor_nombre);
-        valores.put("telefono", valor_telefono);
+        valores.put("codigo_sector", codigoSector);
+        valores.put("tipo_trampa", tipoTrampa);
+        valores.put("nivel_captura", Integer.parseInt(nivelCaptura));
+        valores.put("observaciones", observaciones);
 
-        db.update("contactos", valores, "id="+id, null);
+        db.update("trampas", valores, "id="+id, null);
 
         db.close();
         finish();

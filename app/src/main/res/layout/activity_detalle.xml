@@ -31,18 +31,34 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/txt_nombre"
+            android:id="@+id/txt_codigo_sector"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre : Juan"
+            android:text="Codigo sectro : ari-01"
             android:textAlignment="center"
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/txt_telefono"
+            android:id="@+id/txt_tipo_trampa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Telefono : 123456"
+            android:text="Tipo trampa : Jackson"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/txt_nivel_captura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="nivel captura : 15"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/txt_observaciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Observaciones: sector centro"
             android:textAlignment="center"
             android:textSize="24sp" />
 

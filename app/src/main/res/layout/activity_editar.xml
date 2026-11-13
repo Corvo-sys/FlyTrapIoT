@@ -8,17 +8,19 @@
     tools:context=".EditarActivity">
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Editar Contacto"
+            android:text="Editar trampas"
             android:textAlignment="center"
             android:textSize="34sp" />
 
@@ -26,10 +28,10 @@
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre" />
+            android:text="codigo sector" />
 
         <EditText
-            android:id="@+id/input_nombre2"
+            android:id="@+id/input_codigo_sector"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -39,10 +41,36 @@
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Telefono" />
+            android:text="tipo trampa" />
 
         <EditText
-            android:id="@+id/input_telefono2"
+            android:id="@+id/input_tipo_trampas2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="nivel captura" />
+
+        <EditText
+            android:id="@+id/input_nivel_captura2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="observaciones" />
+
+        <EditText
+            android:id="@+id/input_observaciones2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
